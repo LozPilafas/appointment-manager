@@ -1,12 +1,14 @@
-
-
-
-export function ContactLine()
-{
-    return(
-    <tr>
-    <td>Name goes here</td>
-    <td>E-mail goes here</td> 
-    <td>Tel goes here</td>
-  </tr>)
+export function ContactLine(props) {
+  return (
+    <div className="content ">
+      <blockquote>
+            <p>
+              <strong>{props.contact.name}</strong>
+            </p>
+            <p>{props.contact.email}</p>
+            <p>{props.contact.tel}</p>
+        
+      </blockquote>
+    </div>
+  );
 }
