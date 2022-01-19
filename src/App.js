@@ -32,6 +32,37 @@ const testDataContacts=[
 
 ]
 
+const testDataAppoints=[
+  {contact:'Joe Blogs 1',
+  title:"Meeting",
+  date:'13/12/2021',
+  time:"20:25"
+  
+},
+{contact:'Joe Blogs 2',
+title:"Meeting",
+date:'13/12/2021',
+time:"20:25"
+},
+{contact:'Joe Blogs 3',
+title:"Meeting",
+date:'13/12/2021',
+time:"20:25"
+},
+{contact:'Joe Blogs 4',
+title:"Meeting",
+date:'13/12/2021',
+time:"20:25"
+},
+{contact:'Joe Blogs 5',
+title:"Meeting",
+date:'13/12/2021',
+time:"20:25"
+},
+
+
+]
+
 
 
 
@@ -43,7 +74,7 @@ export default function App() {
   })
   const [contacts,setContancts]=useState(testDataContacts)
   const [newAppoint,setNewAppoint]=useState({contact:"",title:"",date:"",time:""})
-  const [appointments,setAppointments]=useState([])
+  const [appointments,setAppointments]=useState(testDataAppoints)
   const [contactFilter,setContactFilter]=useState("")
   const [appointFilter,setAppointFilter]=useState("")
 
