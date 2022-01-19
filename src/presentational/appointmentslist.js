@@ -14,6 +14,8 @@ export function AppointmentsList (props){
             class="input"
             type="text"
             placeholder="Filter  by Name"
+            name='AppointFilter'
+            onChange={props.handleInputChangeApptsfilter}
           />
         </p>
         <p class="control">

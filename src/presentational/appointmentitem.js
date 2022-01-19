@@ -6,12 +6,13 @@ export function AppointmentItem(props)
         <div className="content ">
           <blockquote>
                 <p>
-                  <strong>{props.appointments.contact}</strong>
+                  <strong><i class="far fa-user-circle fa-lg"></i> {props.appointments.contact}</strong>
                 </p>
-                <p>{props.appointments.date}</p>
-                <p>Time goes here</p>
-                <p>{props.appointments.title}</p>
-                <p>Options go here</p>
+                <p><i class="fas fa-tasks fa-lg"></i> {props.appointments.title}</p>
+                <p><i class="far fa-calendar-alt fa-lg"></i> {props.appointments.date}</p>
+                <p><i class="far fa-hourglass fa-lg"></i> {props.appointments.time}</p>
+                
+                
             
           </blockquote>
         </div>

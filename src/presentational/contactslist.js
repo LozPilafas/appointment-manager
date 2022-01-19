@@ -8,6 +8,8 @@ export function ContactsList(props) {
           <input
             class="input"
             type="text"
+            name="contactFilter"
+            onChange={props.onChange}
             placeholder="Filter Contacts by Name"
           />
         </p>

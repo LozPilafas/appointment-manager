@@ -7,6 +7,30 @@ import { AppointmentItem } from "./presentational/appointmentitem";
 
 
 
+const testDataContacts=[
+  {name:'Joe Blogs 1',
+  email:"Joe@Blogs.com",
+  tel:12312341231
+},
+{name:'Sam Blegs 2',
+  email:"Joe@Blogs.com",
+  tel:12312341231
+},
+{name:'Jim Bligs 3',
+  email:"Joe@Blogs.com",
+  tel:12312341231
+},
+{name:'Aida Add 3',
+  email:"aida@Blogs.com",
+  tel:12312341231
+},
+{name:'Kim Chee 3',
+  email:"KC@Blogs.com",
+  tel:12312341231
+},
+
+
+]
 
 
 
@@ -17,19 +41,29 @@ export default function App() {
     email:"",
     tel:"",
   })
-  const [contacts,setContancts]=useState([])
-  const [newAppoint,setNewAppoint]=useState({contact:"",title:"",date:""})
+  const [contacts,setContancts]=useState(testDataContacts)
+  const [newAppoint,setNewAppoint]=useState({contact:"",title:"",date:"",time:""})
   const [appointments,setAppointments]=useState([])
+  const [contactFilter,setContactFilter]=useState("")
+  const [appointFilter,setAppointFilter]=useState("")
 
 
   const handleInputChange=(e)=>{
 
-    setNewContact((prev)=>({...prev,[e.target.name]:e.target.value.trim()}))
+    setNewContact((prev)=>({...prev,[e.target.name]:e.target.value}))
+  }
+  const handleInputChangeAppfilter=(e)=>{
+
+    setContactFilter(e.target.value)
+  }
+  const handleInputChangeApptsfilter=(e)=>{
+
+    setAppointFilter(e.target.value)
   }
 
   const handleInputChangeAppoint=(e)=>
   {
-    setNewAppoint((prev)=>({...prev,[e.target.name]:e.target.value.trim()}))
+    setNewAppoint((prev)=>({...prev,[e.target.name]:e.target.value}))
 
   }
 
@@ -37,9 +71,9 @@ export default function App() {
   {
     e.preventDefault()
 
-    if(newContact && contacts.filter((contact)=>contact.name.toUpperCase()===newContact.name.toUpperCase()).length===0)
+    if(newContact.name.trim()!=="" && newContact.tel.length!==0 &&  contacts.filter((contact)=>contact.name.toUpperCase()===newContact.name.toUpperCase()).length===0)
     {
-      setContancts((prev)=>[...prev,{name:newContact.name,email:newContact.email,tel:newContact.tel}])
+      setContancts((prev)=>[...prev,{name:newContact.name,email:newContact.email,tel:newContact.tel.trim()}])
       setNewContact({
         name:"",
         email:"",
@@ -48,7 +82,7 @@ export default function App() {
     }
     else
     {
-      alert('Contact with this Name already exists')
+      alert('Contact with this Name already exists or a field is empty')
     }
 
 
@@ -61,8 +95,8 @@ export default function App() {
 
     if(newAppoint.contact!=="" && appointments.filter((contact)=>contact.contact.toUpperCase()===newAppoint.contact.toUpperCase()).length===0)
     {
-      setAppointments((prev)=>[...prev,{contact:newAppoint.contact,title:newAppoint.title,date:newAppoint.date}])
-      setNewAppoint({contact:"",title:"",date:""})
+      setAppointments((prev)=>[...prev,{contact:newAppoint.contact,title:newAppoint.title,date:newAppoint.date,time:newAppoint.time}])
+      setNewAppoint({contact:"",title:"",date:"",time:""})
     }
     else
     {
@@ -77,7 +111,16 @@ export default function App() {
 {
   if(contacts.length>0)
   {
+    if(contactFilter==="")
+    {
+      
    return contacts.map((contact)=><ContactLine contact={contact} />)
+    }
+    else if(contactFilter!=="")
+    {
+      
+      return contacts.map((contact)=>contact.name.toUpperCase().includes(contactFilter.toUpperCase())? <ContactLine contact={contact} />:"")
+    }
   }
   return (<h3>No contacts found - add a new one!</h3>)
 }
@@ -95,7 +138,15 @@ const renderContactOptions=(contacts)=>
 
 const renderAppointmentLines=(appointments)=>
 {
+
+if(appointFilter==="")
+{
   return appointments.map((item)=><AppointmentItem appointments={item} />)
+}
+else if(appointFilter!=="")
+{
+  return appointments.map((item)=>item.contact.toUpperCase().includes(appointFilter.toUpperCase())?<AppointmentItem appointments={item} />:"")
+}
 }
 
 
@@ -114,6 +165,7 @@ const renderAppointmentLines=(appointments)=>
           onCreate={handleCreateSubmit}
           contacts={contacts}
           renderContactlines={renderContactLines}
+          handleInputChangeAppfilter={handleInputChangeAppfilter}
           />} />
 
           <Route path="/appointments" element={<AppointmentsPage 
@@ -121,9 +173,11 @@ const renderAppointmentLines=(appointments)=>
           contacts={contacts}
           handleInputChangeAppoint={handleInputChangeAppoint}
           handleCreateSubmitAppoint={handleCreateSubmitAppoint}
+          
           currentValues={newAppoint}
           appointments={appointments}
           renderAppointmentLines={renderAppointmentLines}
+          handleInputChangeApptsfilter={handleInputChangeApptsfilter}
           
           />} />
           

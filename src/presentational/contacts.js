@@ -51,6 +51,7 @@ export function Contactpage(props) {
         <ContactsList
           contacts={props.contacts}
           renderContactlines={props.renderContactlines}
+          onChange={props.handleInputChangeAppfilter}
         />
      </div>
     </>

@@ -23,13 +23,14 @@ return(
     </select>
     <input className="input mt-4 " type="text" placeholder="Input a title" required="true" name="title" onChange={props.handleInputChangeAppoint} value={props.currentValues.title}/>
     <input className="input mt-4 " type="date" required="yes" name="date" onChange={props.handleInputChangeAppoint} value={props.currentValues.date} />
+    <input className="input mt-4 " type="time" required="yes" name="time" onChange={props.handleInputChangeAppoint} value={props.currentValues.time} />
     <button className="button is-primary mt-4" type="submit" value="Create Appointment" >Create Appointment</button>
 </form>
 
 </div>
 </div>
 
-<AppointmentsList renderAppointmentLines={props.renderAppointmentLines} appointments={props.appointments} /></div>
+<AppointmentsList renderAppointmentLines={props.renderAppointmentLines} appointments={props.appointments} handleInputChangeApptsfilter={props.handleInputChangeApptsfilter} /></div>
     </>
 
 
