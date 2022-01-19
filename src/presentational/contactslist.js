@@ -12,7 +12,7 @@ export function ContactsList(props) {
           />
         </p>
         <p class="control">
-          <a class="button is-info">Search</a>
+          <a class="button is-primary">Search</a>
         </p>
       </div>
 

@@ -6,11 +6,11 @@ export function AppointmentItem(props)
         <div className="content ">
           <blockquote>
                 <p>
-                  <strong>Customer Name goes here</strong>
+                  <strong>{props.appointments.contact}</strong>
                 </p>
-                <p>Date goes here</p>
+                <p>{props.appointments.date}</p>
                 <p>Time goes here</p>
-                <p>Title Goes here</p>
+                <p>{props.appointments.title}</p>
                 <p>Options go here</p>
             
           </blockquote>

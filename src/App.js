@@ -3,6 +3,7 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 import { Contactpage } from "./presentational/contacts";
 import {ContactLine} from "./presentational/contactline"
 import {AppointmentsPage} from "./presentational/appointmentspage"
+import { AppointmentItem } from "./presentational/appointmentitem";
 
 
 
@@ -65,7 +66,7 @@ export default function App() {
     }
     else
     {
-      alert('Appointment with this Name already exists')
+      alert('Appointment with this Name already exists or Contact hasnt been selected')
     }
 
 
@@ -88,8 +89,13 @@ const renderContactOptions=(contacts)=>
     return contacts.map((contactitem)=><option  value={contactitem.name}>{contactitem.name}</option>)
   }
   else{
-  return <option>No contacts found</option>
+  return <option disabled selected>No contacts found</option>
   }
+}
+
+const renderAppointmentLines=(appointments)=>
+{
+  return appointments.map((item)=><AppointmentItem appointments={item} />)
 }
 
 
@@ -98,7 +104,7 @@ const renderContactOptions=(contacts)=>
 
   return (
     <>
-    <h1>Appointment Manager</h1>
+    
       <Routes>
         <Route path="/" element={<Layout />}>
          
@@ -115,6 +121,9 @@ const renderContactOptions=(contacts)=>
           contacts={contacts}
           handleInputChangeAppoint={handleInputChangeAppoint}
           handleCreateSubmitAppoint={handleCreateSubmitAppoint}
+          currentValues={newAppoint}
+          appointments={appointments}
+          renderAppointmentLines={renderAppointmentLines}
           
           />} />
           
@@ -130,21 +139,29 @@ const renderContactOptions=(contacts)=>
 function Layout() {
   return (
 
-    <div>
+    <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
       {/* A "layout route" is a good place to put markup you want to
           share across all the pages on your site, like navigation. */}
-      <nav>
-        <ul>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <span className="navbar-item"> Appointment Manager v0.1</span>
           
-          <li>
-            <Link to="/contacts">Contacts</Link>
-          </li>
-          <li>
-            <Link to="/appointments">Appointments</Link>
-          </li>
+          </div>
           
-        </ul>
+    <div class="navbar-start">
+      <a class="navbar-item"><Link to="/contacts">Contacts</Link></a>
+        
+          
+          <a className="navbar-item"><Link to="/appointments">Appointments</Link>
+            
+          </a>
+          
+            
+          </div>
+          
+          
+        
       </nav>
 
       <hr />
@@ -153,6 +170,7 @@ function Layout() {
           so you can think about this <Outlet> as a placeholder for
           the child routes we defined above. */}
       <Outlet />
-    </div>
+      
+    </>
   );
 }
