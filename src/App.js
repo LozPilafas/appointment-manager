@@ -24,8 +24,8 @@ const testDataContacts=[
   email:"aida@Blogs.com",
   tel:12312341231
 },
-{name:'Kim Chee 3 xxxxxxxxxxxxxxxxxxxxxxxx',
-  email:"KC@Blogs.com",
+{name:'xxxxx xxxxxxxxxxxxxxxxxxxxxxxx',
+  email:"xx@Blogs.com",
   tel:12312341231
 },
 
