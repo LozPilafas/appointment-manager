@@ -199,7 +199,21 @@ else if(appointFilter!=="")
           handleInputChangeAppfilter={handleInputChangeAppfilter}
           />} />
 
-          <Route index element={<AppointmentsPage 
+          <Route index  element={<AppointmentsPage 
+          renderContactOptions={renderContactOptions}
+          contacts={contacts}
+          handleInputChangeAppoint={handleInputChangeAppoint}
+          handleCreateSubmitAppoint={handleCreateSubmitAppoint}
+          
+          currentValues={newAppoint}
+          appointments={appointments}
+          renderAppointmentLines={renderAppointmentLines}
+          handleInputChangeApptsfilter={handleInputChangeApptsfilter}
+          
+          />} />
+
+
+<Route  path="/appointments"  element={<AppointmentsPage 
           renderContactOptions={renderContactOptions}
           contacts={contacts}
           handleInputChangeAppoint={handleInputChangeAppoint}
