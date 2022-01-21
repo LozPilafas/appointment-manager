@@ -24,7 +24,7 @@ const testDataContacts=[
   email:"aida@Blogs.com",
   tel:12312341231
 },
-{name:'Kim Chee 3',
+{name:'Kim Chee 3 xxxxxxxxxxxxxxxxxxxxxxxx',
   email:"KC@Blogs.com",
   tel:12312341231
 },
@@ -190,7 +190,7 @@ else if(appointFilter!=="")
       <Routes>
         <Route path="/" element={<Layout />}>
          
-          <Route path="/contacts" element={<Contactpage 
+          <Route  path="/contacts" element={<Contactpage 
           handleInputChange={handleInputChange} 
           currentValues={newContact} 
           onCreate={handleCreateSubmit}
@@ -199,7 +199,7 @@ else if(appointFilter!=="")
           handleInputChangeAppfilter={handleInputChangeAppfilter}
           />} />
 
-          <Route path="/appointments" element={<AppointmentsPage 
+          <Route index element={<AppointmentsPage 
           renderContactOptions={renderContactOptions}
           contacts={contacts}
           handleInputChangeAppoint={handleInputChangeAppoint}
@@ -212,7 +212,14 @@ else if(appointFilter!=="")
           
           />} />
           
-          <Route path="*" element={<h1>Page not found</h1>} />
+          <Route path="*" element={<Contactpage 
+          handleInputChange={handleInputChange} 
+          currentValues={newContact} 
+          onCreate={handleCreateSubmit}
+          contacts={contacts}
+          renderContactlines={renderContactLines}
+          handleInputChangeAppfilter={handleInputChangeAppfilter}
+          />} />
         </Route>
       </Routes>
     </>

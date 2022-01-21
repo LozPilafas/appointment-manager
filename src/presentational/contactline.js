@@ -1,6 +1,6 @@
 export function ContactLine(props) {
   return (
-    <div className="content ">
+    <div className="content " style={{'overflowWrap': 'break-word'}}>
       <blockquote>
             <p>
               <strong>{props.contact.name}</strong>

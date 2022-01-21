@@ -3,7 +3,7 @@
 export function AppointmentItem(props)
 {
     return (
-        <div className="content ">
+        <div className="content " style={{'overflowWrap': 'break-word'}}>
           <blockquote>
                 <p>
                   <strong><i class="far fa-user-circle fa-lg"></i> {props.appointments.contact}</strong>
